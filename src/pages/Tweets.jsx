@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { BackLink } from "../components/BackLink";
+// import { BackLink } from "../components/BackLink";
 import UserList from "../components/UsersList/UsersList";
 const Tweets = () => {
   const location = useLocation();
@@ -7,7 +7,7 @@ const Tweets = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref}>back</BackLink>
+      <Link to={backLinkHref}>back</Link>
       <UserList />
     </main>
   );
