@@ -37,10 +37,8 @@ const UserList = () => {
 
     if (filter === FILTER_VALUES.FOLLOW) {
       filteredUsers = users.filter((user) => !Object.keys(localStorage).includes(user.id));
-      console.log(filteredUsers);
     } else if (filter === FILTER_VALUES.FOLLOWINGS) {
       filteredUsers = users.filter((user) => Object.keys(localStorage).includes(user.id));
-      console.log(filteredUsers);
     }
 
     setDisplayedUsers(filteredUsers.slice(0, usersPerPage));
