@@ -7,7 +7,7 @@ const Tweets = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref}>🔙</BackLink>
+      <BackLink to={backLinkHref}>back</BackLink>
       <UserList />
     </main>
   );
