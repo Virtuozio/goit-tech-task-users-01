@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { getUsers } from "../../usersAPI";
+import { getUsers } from "../../service/usersAPI";
 import UserCard from "../UserCard/UserCard";
 import UserFilter from "../UserFilter/UserFilter";
-import css from "../UsersList/UserList.module.css";
+import css from "./UserList.module.css";
 const UserList = () => {
   const usersPerPage = 3;
   const FILTER_VALUES = {
@@ -51,6 +51,7 @@ const UserList = () => {
   };
 
   const handleFilterChange = ({ target }) => {
+    target.parentNode.previousSibling.textContent = target.textContent;
     setFilter(target.textContent);
   };
 

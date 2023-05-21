@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import css from "./UserCard.module.css";
-import GoitLogo from "../../assets/goit-logo.svg";
-import Picture from "../../assets/picture1.png";
+import GoitLogo from "../../images/goit-logo.svg";
+import Picture from "../../images/picture1.png";
 
 const UserCard = ({ user }) => {
   const [followers, setFollowers] = useState(user.followers);

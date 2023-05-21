@@ -9,6 +9,7 @@ const styles = {
     fontWeight: 500,
     fontSize: 48,
     textAlign: "center",
+    color: "#471ca9",
   },
 };
 
@@ -16,7 +17,7 @@ export default function Home() {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>
-        Tweeter{" "}
+        Tweeter
         <span role="img" aria-label="Greeting icon">
           💁‍♀️
         </span>
