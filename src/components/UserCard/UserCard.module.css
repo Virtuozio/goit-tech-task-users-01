@@ -8,8 +8,7 @@
   position: relative;
 }
 .logo {
-  display: flex;
-  padding: 20px;
+  margin: 20px;
 }
 .picture {
   position: absolute;
@@ -56,7 +55,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-top: 220px;
+  margin-top: 225px;
   margin-bottom: 26px;
 }
 

@@ -2,18 +2,24 @@ import React, { useEffect, useState } from "react";
 
 import { getUsers } from "../../usersAPI";
 import UserCard from "../UserCard/UserCard";
+import UserFilter from "../UserFilter/UserFilter";
 import css from "../UsersList/UserList.module.css";
 const UserList = () => {
   const usersPerPage = 3;
-
+  const FILTER_VALUES = {
+    FOLLOW: "Follow",
+    FOLLOWINGS: "Followings",
+  };
   const [users, setUsers] = useState([]);
   const [displayedUsers, setDisplayedUsers] = useState([]);
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     const fetchsUsers = async () => {
       try {
         const data = await getUsers();
         setUsers(data);
+
         setDisplayedUsers(data.slice(0, usersPerPage));
       } catch (error) {
         console.error(error);
@@ -22,15 +28,38 @@ const UserList = () => {
     fetchsUsers();
   }, []);
 
+  useEffect(() => {
+    filterUsers();
+  }, [filter]);
+
+  const filterUsers = () => {
+    let filteredUsers = users;
+
+    if (filter === FILTER_VALUES.FOLLOW) {
+      filteredUsers = users.filter((user) => !Object.keys(localStorage).includes(user.id));
+      console.log(filteredUsers);
+    } else if (filter === FILTER_VALUES.FOLLOWINGS) {
+      filteredUsers = users.filter((user) => Object.keys(localStorage).includes(user.id));
+      console.log(filteredUsers);
+    }
+
+    setDisplayedUsers(filteredUsers.slice(0, usersPerPage));
+  };
+
   const handleLoadMore = () => {
     const currentIndex = displayedUsers.length;
     const newDisplayedUsers = users.slice(0, currentIndex + usersPerPage);
     setDisplayedUsers(newDisplayedUsers);
   };
 
+  const handleFilterChange = ({ target }) => {
+    setFilter(target.textContent);
+  };
+
   return (
     <>
-      <ul>
+      <UserFilter onChange={handleFilterChange} />
+      <ul className={css["users-list"]}>
         {displayedUsers.map((user) => (
           <UserCard user={user} key={user.id} />
         ))}
