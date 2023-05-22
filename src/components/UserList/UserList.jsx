@@ -41,7 +41,7 @@ const UserList = () => {
       filteredUsers = users.filter((user) => Object.keys(localStorage).includes(user.id));
     }
 
-    setDisplayedUsers(filteredUsers.slice(0, usersPerPage));
+    setDisplayedUsers(filteredUsers);
   };
 
   const handleLoadMore = () => {

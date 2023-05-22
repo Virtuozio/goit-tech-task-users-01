@@ -20,8 +20,8 @@
   left: 160px;
   top: -26px;
   border-radius: 50%;
-  border-image: url(/src/images/Ellipse.png) 9 round;
 }
+
 .line {
   position: absolute;
   top: 50%;
